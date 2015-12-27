@@ -1,0 +1,73 @@
+﻿@model IEnumerable<AppWebEncodageEmploi.Travailleur>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>Index des travailleurs</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Nom
+        </th>
+        <th>
+            Prénom
+        </th>
+        <th>
+            Sexe
+        </th>
+        <th>
+            Rue domicile
+        </th>
+        <th>
+            Numéro
+        </th>
+        <th>
+            Localité
+        </th>
+        <th>
+            Dossier médical
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.displayID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prenom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomRueDomicile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroRueDomicile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Localite.CodeNom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.displayNumDossierMedic)
+        </td>
+        
+        <!--<td>
+            Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>-->
+    </tr>
+}
+
+</table>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="50108c4eedb84039bfd4147206dc61e1" Name="Diagram1">
+        <EntityTypeShape EntityType="DBIG3B1Model.Emploi" Width="1.5" PointX="5.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIG3B1Model.Entreprise" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIG3B1Model.Localite" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIG3B1Model.Profession" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBIG3B1Model.Travailleur" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="DBIG3B1Model.REF_Emplo_Entre_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIG3B1Model.REF_Emplo_Profe_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIG3B1Model.REF_Emplo_Trava_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIG3B1Model.REF_Entre_Local_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="DBIG3B1Model.REF_Trava_Local_FK" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

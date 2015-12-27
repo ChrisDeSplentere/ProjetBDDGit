@@ -1,0 +1,44 @@
+Insert into Profession values(1,'Secrétaire');
+Insert into Profession values(2,'Chef de projet');
+Insert into Profession values(3,'Programmeur');
+Insert into Profession values(4,'Analyste');
+Insert into Profession values(5,'Comptable');
+Insert into Profession values(6,'Web designer');
+Insert into Profession values(7,'Infographiste');
+Insert into Profession values(8,'Responsable de la communication');
+Insert into Profession values(9,'Technicien de surface');
+Insert into Profession values(10,'Responsable marketing');
+
+Insert into Localite values (1,'Namur','5000','Belgique');
+Insert into Localite values (2,'Wavre','1300','Belgique');
+Insert into Localite values (3,'Louvain','3000','Belgique');
+Insert into Localite values (4,'Mons','7000','Belgique');
+Insert into Localite values (5,'Bruxelles','1000','Belgique');
+Insert into Localite values (6,'Liège','4000','Belgique');
+Insert into Localite values (7,'Hasselt','3500','Belgique');
+Insert into Localite values (8,'Arlon','6700','Belgique');
+Insert into Localite values (9,'Gant','9000','Belgique');
+Insert into Localite values (10,'Bruges','8000','Belgique');
+Insert into Localite values (11,'Anvers','2000','Belgique');
+
+Insert into Entreprise values(1,'EchoSoft','Rue du Centre','116','081123456',10,5,1);
+Insert into Entreprise values(2,'La maison de la frite','Rue Belliard','10','027789012',4,1,5);
+Insert into Entreprise values(3,'SAP','Avenue des Olympiades','2','026345678',1500,400,5);
+Insert into Entreprise values(4,'Le Savoir Fer','Rue Neuve','15','065901234',850,15,4);
+
+SET IDENTITY_INSERT dbo.Travailleur ON;
+Insert into Travailleur (ID,Nom,Prenom,Sexe,NomRueDomicile,NumeroRueDomicile,NumDossierMedic,IDDomicile) values(1,'De Splentere','Chris','M','Rue Armée Grouchy','36',null,1);
+Insert into Travailleur (ID,Nom,Prenom,Sexe,NomRueDomicile,NumeroRueDomicile,NumDossierMedic,IDDomicile) values(2,'Guillaume','Loïc','M','Rue Secrète','12',null,8);
+Insert into Travailleur (ID,Nom,Prenom,Sexe,NomRueDomicile,NumeroRueDomicile,NumDossierMedic,IDDomicile) values(3,'Jacquemin','William','M','Rue Inconnue','34',66176617,7);
+Insert into Travailleur (ID,Nom,Prenom,Sexe,NomRueDomicile,NumeroRueDomicile,NumDossierMedic,IDDomicile) values(4,'Kerimov','Mahatch','M','Rue Scie','56',null,5);
+Insert into Travailleur (ID,Nom,Prenom,Sexe,NomRueDomicile,NumeroRueDomicile,NumDossierMedic,IDDomicile) values(5,'Renardus','Maximus','M','Boulevard Decimus Meridius','17',42424242,5);
+Insert into Travailleur (ID,Nom,Prenom,Sexe,NomRueDomicile,NumeroRueDomicile,NumDossierMedic,IDDomicile) values(6,'Ri','Hanna','F','Rue Only Girl In The DB','90',98765432,2);
+Insert into Travailleur (ID,Nom,Prenom,Sexe,NomRueDomicile,NumeroRueDomicile,NumDossierMedic,IDDomicile) values(7,'Dupond','Jean','M','Rue Haute','2',null,11);
+Insert into Travailleur (ID,Nom,Prenom,Sexe,NomRueDomicile,NumeroRueDomicile,NumDossierMedic,IDDomicile) values(8,'Willis','Bruce','M','Rue Badass','15',11111111,10);
+SET IDENTITY_INSERT dbo.Travailleur OFF;
+
+
+
+
+
+https://msdn.microsoft.com/en-us/library/ms188059.aspx

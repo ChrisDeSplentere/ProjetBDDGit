@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBIG3B1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Emploi">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="8" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EstSoumis" Type="Boolean" Nullable="false" />
+    <Property Name="DateDebut" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IDTravailleur" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="CodeProfession" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="DateFin" Type="DateTime" Precision="0" />
+    <Property Name="NumeroEntreprise" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Entreprise" Relationship="Self.REF_Emplo_Entre_FK" FromRole="Emploi" ToRole="Entreprise" />
+    <NavigationProperty Name="Profession" Relationship="Self.REF_Emplo_Profe_FK" FromRole="Emploi" ToRole="Profession" />
+    <NavigationProperty Name="Travailleur" Relationship="Self.REF_Emplo_Trava_FK" FromRole="Emploi" ToRole="Travailleur" />
+  </EntityType>
+  <EntityType Name="Entreprise">
+    <Key>
+      <PropertyRef Name="Numero" />
+    </Key>
+    <Property Name="Numero" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="Denomination" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NomRue" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NumeroRue" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NumTel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NbSoumis" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="NbNonSoumis" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="IDLocalite" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Emplois" Relationship="Self.REF_Emplo_Entre_FK" FromRole="Entreprise" ToRole="Emploi" />
+    <NavigationProperty Name="Localite" Relationship="Self.REF_Entre_Local_FK" FromRole="Entreprise" ToRole="Localite" />
+  </EntityType>
+  <EntityType Name="Localite">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="Nom" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CodePostal" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pays" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Entreprises" Relationship="Self.REF_Entre_Local_FK" FromRole="Localite" ToRole="Entreprise" />
+    <NavigationProperty Name="Travailleurs" Relationship="Self.REF_Trava_Local_FK" FromRole="Localite" ToRole="Travailleur" />
+  </EntityType>
+  <EntityType Name="Profession">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="Denomination" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Emplois" Relationship="Self.REF_Emplo_Profe_FK" FromRole="Profession" ToRole="Emploi" />
+  </EntityType>
+  <EntityType Name="Travailleur">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="8" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Prenom" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Sexe" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="NomRueDomicile" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NumeroRueDomicile" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NumDossierMedic" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="IDDomicile" Type="Decimal" Precision="8" Scale="0" Nullable="false" />
+    <NavigationProperty Name="Emplois" Relationship="Self.REF_Emplo_Trava_FK" FromRole="Travailleur" ToRole="Emploi" />
+    <NavigationProperty Name="Localite" Relationship="Self.REF_Trava_Local_FK" FromRole="Travailleur" ToRole="Localite" />
+  </EntityType>
+  <Association Name="REF_Emplo_Entre_FK">
+    <End Role="Entreprise" Type="Self.Entreprise" Multiplicity="1" />
+    <End Role="Emploi" Type="Self.Emploi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entreprise">
+        <PropertyRef Name="Numero" />
+      </Principal>
+      <Dependent Role="Emploi">
+        <PropertyRef Name="NumeroEntreprise" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="REF_Emplo_Profe_FK">
+    <End Role="Profession" Type="Self.Profession" Multiplicity="1" />
+    <End Role="Emploi" Type="Self.Emploi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profession">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="Emploi">
+        <PropertyRef Name="CodeProfession" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="REF_Emplo_Trava_FK">
+    <End Role="Travailleur" Type="Self.Travailleur" Multiplicity="1" />
+    <End Role="Emploi" Type="Self.Emploi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Travailleur">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Emploi">
+        <PropertyRef Name="IDTravailleur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="REF_Entre_Local_FK">
+    <End Role="Localite" Type="Self.Localite" Multiplicity="1" />
+    <End Role="Entreprise" Type="Self.Entreprise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Localite">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Entreprise">
+        <PropertyRef Name="IDLocalite" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="REF_Trava_Local_FK">
+    <End Role="Localite" Type="Self.Localite" Multiplicity="1" />
+    <End Role="Travailleur" Type="Self.Travailleur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Localite">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Travailleur">
+        <PropertyRef Name="IDDomicile" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBIG3B1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Emplois" EntityType="Self.Emploi" />
+    <EntitySet Name="Entreprises" EntityType="Self.Entreprise" />
+    <EntitySet Name="Localites" EntityType="Self.Localite" />
+    <EntitySet Name="Professions" EntityType="Self.Profession" />
+    <EntitySet Name="Travailleurs" EntityType="Self.Travailleur" />
+    <AssociationSet Name="REF_Emplo_Entre_FK" Association="Self.REF_Emplo_Entre_FK">
+      <End Role="Entreprise" EntitySet="Entreprises" />
+      <End Role="Emploi" EntitySet="Emplois" />
+    </AssociationSet>
+    <AssociationSet Name="REF_Emplo_Profe_FK" Association="Self.REF_Emplo_Profe_FK">
+      <End Role="Profession" EntitySet="Professions" />
+      <End Role="Emploi" EntitySet="Emplois" />
+    </AssociationSet>
+    <AssociationSet Name="REF_Emplo_Trava_FK" Association="Self.REF_Emplo_Trava_FK">
+      <End Role="Travailleur" EntitySet="Travailleurs" />
+      <End Role="Emploi" EntitySet="Emplois" />
+    </AssociationSet>
+    <AssociationSet Name="REF_Entre_Local_FK" Association="Self.REF_Entre_Local_FK">
+      <End Role="Localite" EntitySet="Localites" />
+      <End Role="Entreprise" EntitySet="Entreprises" />
+    </AssociationSet>
+    <AssociationSet Name="REF_Trava_Local_FK" Association="Self.REF_Trava_Local_FK">
+      <End Role="Localite" EntitySet="Localites" />
+      <End Role="Travailleur" EntitySet="Travailleurs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

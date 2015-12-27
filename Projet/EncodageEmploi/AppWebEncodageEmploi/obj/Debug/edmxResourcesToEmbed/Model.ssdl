@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBIG3B1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Emploi">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Precision="8" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EstSoumis" Type="bit" Nullable="false" />
+    <Property Name="DateDebut" Type="date" Nullable="false" />
+    <Property Name="IDTravailleur" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="CodeProfession" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="DateFin" Type="date" />
+    <Property Name="NumeroEntreprise" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Entreprise">
+    <Key>
+      <PropertyRef Name="Numero" />
+    </Key>
+    <Property Name="Numero" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="Denomination" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="NomRue" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="NumeroRue" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="NumTel" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="NbSoumis" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="NbNonSoumis" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="IDLocalite" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Localite">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="Nom" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="CodePostal" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Pays" Type="varchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Profession">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+    <Property Name="Denomination" Type="varchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Travailleur">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Precision="8" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nom" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="Prenom" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="Sexe" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="NomRueDomicile" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="NumeroRueDomicile" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="NumDossierMedic" Type="numeric" Precision="8" Scale="0" />
+    <Property Name="IDDomicile" Type="numeric" Precision="8" Scale="0" Nullable="false" />
+  </EntityType>
+  <Association Name="REF_Emplo_Entre_FK">
+    <End Role="Entreprise" Type="Self.Entreprise" Multiplicity="1" />
+    <End Role="Emploi" Type="Self.Emploi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entreprise">
+        <PropertyRef Name="Numero" />
+      </Principal>
+      <Dependent Role="Emploi">
+        <PropertyRef Name="NumeroEntreprise" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="REF_Emplo_Profe_FK">
+    <End Role="Profession" Type="Self.Profession" Multiplicity="1" />
+    <End Role="Emploi" Type="Self.Emploi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profession">
+        <PropertyRef Name="Code" />
+      </Principal>
+      <Dependent Role="Emploi">
+        <PropertyRef Name="CodeProfession" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="REF_Emplo_Trava_FK">
+    <End Role="Travailleur" Type="Self.Travailleur" Multiplicity="1" />
+    <End Role="Emploi" Type="Self.Emploi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Travailleur">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Emploi">
+        <PropertyRef Name="IDTravailleur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="REF_Entre_Local_FK">
+    <End Role="Localite" Type="Self.Localite" Multiplicity="1" />
+    <End Role="Entreprise" Type="Self.Entreprise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Localite">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Entreprise">
+        <PropertyRef Name="IDLocalite" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="REF_Trava_Local_FK">
+    <End Role="Localite" Type="Self.Localite" Multiplicity="1" />
+    <End Role="Travailleur" Type="Self.Travailleur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Localite">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Travailleur">
+        <PropertyRef Name="IDDomicile" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBIG3B1ModelStoreContainer">
+    <EntitySet Name="Emploi" EntityType="Self.Emploi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Entreprise" EntityType="Self.Entreprise" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Localite" EntityType="Self.Localite" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Profession" EntityType="Self.Profession" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Travailleur" EntityType="Self.Travailleur" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="REF_Emplo_Entre_FK" Association="Self.REF_Emplo_Entre_FK">
+      <End Role="Entreprise" EntitySet="Entreprise" />
+      <End Role="Emploi" EntitySet="Emploi" />
+    </AssociationSet>
+    <AssociationSet Name="REF_Emplo_Profe_FK" Association="Self.REF_Emplo_Profe_FK">
+      <End Role="Profession" EntitySet="Profession" />
+      <End Role="Emploi" EntitySet="Emploi" />
+    </AssociationSet>
+    <AssociationSet Name="REF_Emplo_Trava_FK" Association="Self.REF_Emplo_Trava_FK">
+      <End Role="Travailleur" EntitySet="Travailleur" />
+      <End Role="Emploi" EntitySet="Emploi" />
+    </AssociationSet>
+    <AssociationSet Name="REF_Entre_Local_FK" Association="Self.REF_Entre_Local_FK">
+      <End Role="Localite" EntitySet="Localite" />
+      <End Role="Entreprise" EntitySet="Entreprise" />
+    </AssociationSet>
+    <AssociationSet Name="REF_Trava_Local_FK" Association="Self.REF_Trava_Local_FK">
+      <End Role="Localite" EntitySet="Localite" />
+      <End Role="Travailleur" EntitySet="Travailleur" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

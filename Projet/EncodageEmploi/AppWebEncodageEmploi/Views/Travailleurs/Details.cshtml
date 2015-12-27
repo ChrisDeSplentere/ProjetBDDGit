@@ -1,0 +1,74 @@
+﻿@model AppWebEncodageEmploi.Travailleur
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Travailleur</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prenom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prenom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sexe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sexe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomRueDomicile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomRueDomicile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroRueDomicile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroRueDomicile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumDossierMedic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumDossierMedic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Localite.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Localite.Nom)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

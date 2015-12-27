@@ -1,0 +1,54 @@
+﻿@model IEnumerable<AppWebEncodageEmploi.Emploi>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>Index des emplois</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            Travailleur
+        </th>
+        <th>
+            Profession
+        </th>
+        <th>
+            Entreprise
+        </th>
+        <th>
+            Date de début
+        </th>
+        <th>
+            Date de fin
+        </th>
+        <th>
+            Soumis
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Travailleur.NomPrenomId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Profession.Denomination)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Entreprise.Denomination)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.displayDateDebut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.displayDateFin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.displayEstSoumis)
+        </td>
+    </tr>
+}
+
+</table>

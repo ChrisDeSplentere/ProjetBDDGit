@@ -1,0 +1,80 @@
+﻿@model AppWebEncodageEmploi.Entreprise
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Entreprise</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Denomination)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Denomination)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomRue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomRue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroRue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroRue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumTel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumTel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NbSoumis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NbSoumis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NbNonSoumis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NbNonSoumis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Localite.Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Localite.Nom)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

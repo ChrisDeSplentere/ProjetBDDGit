@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBIG3B1ModelStoreContainer" CdmEntityContainer="DBIG3B1Entities">
+    <EntitySetMapping Name="Emplois">
+      <EntityTypeMapping TypeName="DBIG3B1Model.Emploi">
+        <MappingFragment StoreEntitySet="Emploi">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EstSoumis" ColumnName="EstSoumis" />
+          <ScalarProperty Name="DateDebut" ColumnName="DateDebut" />
+          <ScalarProperty Name="IDTravailleur" ColumnName="IDTravailleur" />
+          <ScalarProperty Name="CodeProfession" ColumnName="CodeProfession" />
+          <ScalarProperty Name="DateFin" ColumnName="DateFin" />
+          <ScalarProperty Name="NumeroEntreprise" ColumnName="NumeroEntreprise" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Entreprises">
+      <EntityTypeMapping TypeName="DBIG3B1Model.Entreprise">
+        <MappingFragment StoreEntitySet="Entreprise">
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="Denomination" ColumnName="Denomination" />
+          <ScalarProperty Name="NomRue" ColumnName="NomRue" />
+          <ScalarProperty Name="NumeroRue" ColumnName="NumeroRue" />
+          <ScalarProperty Name="NumTel" ColumnName="NumTel" />
+          <ScalarProperty Name="NbSoumis" ColumnName="NbSoumis" />
+          <ScalarProperty Name="NbNonSoumis" ColumnName="NbNonSoumis" />
+          <ScalarProperty Name="IDLocalite" ColumnName="IDLocalite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Localites">
+      <EntityTypeMapping TypeName="DBIG3B1Model.Localite">
+        <MappingFragment StoreEntitySet="Localite">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+          <ScalarProperty Name="Pays" ColumnName="Pays" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Professions">
+      <EntityTypeMapping TypeName="DBIG3B1Model.Profession">
+        <MappingFragment StoreEntitySet="Profession">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Denomination" ColumnName="Denomination" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Travailleurs">
+      <EntityTypeMapping TypeName="DBIG3B1Model.Travailleur">
+        <MappingFragment StoreEntitySet="Travailleur">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="Sexe" ColumnName="Sexe" />
+          <ScalarProperty Name="NomRueDomicile" ColumnName="NomRueDomicile" />
+          <ScalarProperty Name="NumeroRueDomicile" ColumnName="NumeroRueDomicile" />
+          <ScalarProperty Name="NumDossierMedic" ColumnName="NumDossierMedic" />
+          <ScalarProperty Name="IDDomicile" ColumnName="IDDomicile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
