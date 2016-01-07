@@ -18,7 +18,11 @@ namespace AppWebEncodageEmploi
         
         public bool EstSoumis { get; set; }
 
-        [Required(ErrorMessage = "Ce champ est obligatoire")]
+        /*
+        Pour afficher un datePicker sur google chrome : http://stackoverflow.com/questions/12633471/mvc4-datatype-date-editorfor-wont-display-date-value-in-chrome-fine-in-interne
+        Mais génère une exception lorsque date début > date fin.
+        */
+        [Required(ErrorMessage = "Ce champ est obligatoire et doit contenir une date valide")]
         public System.DateTime DateDebut { get; set; }
         
         public decimal IDTravailleur { get; set; }

@@ -3,8 +3,8 @@
 -- *--------------------------------------------
 -- * DB-MAIN version: 9.2.0              
 -- * Generator date: Oct 16 2014              
--- * Generation date: Sat Dec 26 12:50:03 2015 
--- * LUN file: C:\Users\Chris\Desktop\Cours3eIesn\BDD avancées et appl web\Projet\SousSchemaEmploi.lun 
+-- * Generation date: Thu Jan 07 15:11:26 2016 
+-- * LUN file: C:\Users\Chris\Desktop\Cours3eIesn\BDD avancées et appl web\ProjetBDDGit\Projet\SchemasDBMain\SousSchemaEmploi.lun 
 -- * Schema: sousSchemaLogique/SQL 
 -- ********************************************* 
 
